@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasbeeh Counter</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 50px;
+        }
+        #count {
+            font-size: 40px;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        img {
+            width: 150px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Tasbeeh Counter</h2>
+
+    <div id="count">0</div>
+
+    <button onclick="increment()">Count</button>
+    <button onclick="reset()">Reset</button>
+
+    <br>
+    <img id="tasbeehImg" src="https://via.placeholder.com/150" alt="tasbeeh">
+
+    <!-- Simple click sound -->
+    <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+
+    <script>
+        let count = 0;
+
+        function increment() {
+            count++;
+            document.getElementById("count").innerText = count;
+
+            // Play sound
+            document.getElementById("clickSound").play();
+
+            // Change image after certain counts
+            let img = document.getElementById("tasbeehImg");
+
+            if (count >= 100) {
+                img.src = "https://via.placeholder.com/150/ff0000"; // red
+            } else if (count >= 50) {
+                img.src = "https://via.placeholder.com/150/00ff00"; // green
+            } else {
+                img.src = "https://via.placeholder.com/150"; // default
+            }
+        }
+
+        function reset() {
+            count = 0;
+            document.getElementById("count").innerText = count;
+            document.getElementById("tasbeehImg").src = "https://via.placeholder.com/150";
+        }
+    </script>
+
+</body>
+</html>
